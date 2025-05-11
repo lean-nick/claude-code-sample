@@ -4,17 +4,27 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "dev": "react-router dev",
+    "dev": "npx sst dev",
+    "generate": "react-router typegen",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "test": "npx magnitude",
+    "deploy": "npx sst deploy --stage production"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.806.0",
+    "@hono/zod-validator": "^0.5.0",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "isbot": "^5.1.27",
+    "magnitude-test": "^0.1.0",
+    "openai": "^4.98.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.5.3"
+    "react-router": "^7.5.3",
+    "sst": "^3.14.11",
+    "vitest": "^3.1.3",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@react-router/dev": "^7.5.3",
@@ -22,9 +32,16 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "prettier": "3.5.3",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
-    "vite": "^6.3.3",
+    "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "es5"
   }
 }
