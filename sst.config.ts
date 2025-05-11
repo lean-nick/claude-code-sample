@@ -14,8 +14,16 @@ export default $config({
       dimension: 1536
     });
 
+    const table = new sst.aws.Dynamo("SingleTable", {
+      fields: {
+        input: "string",
+        vector: "string",
+      },
+      primaryIndex: { hashKey: "input", rangeKey: "vector" }
+    });
+
     const server = new sst.aws.Function("Server", {
-      link: [vector],
+      link: [vector, table],
       url: true,
       handler: "./app/server/index.handler"
     })

@@ -1,4 +1,5 @@
 import { DynamoDBClient, PutItemCommand, GetItemCommand } from "@aws-sdk/client-dynamodb";
+import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 
 let client: DynamoDBClient | undefined
 
@@ -16,10 +17,10 @@ const putItem = async (tableName: string, item: Record<string, any>) => {
     await client!.send(command);
 };
 
-const getItem = async (tableName: string, key: Record<string, any>) => {
+const getItem = async (tableName: string, input: string) => {
     const params = {
         TableName: tableName,
-        Key: key,
+        Key: marshall({ input }),
     };
     const command = new GetItemCommand(params);
     const result = await client!.send(command);

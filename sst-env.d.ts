@@ -10,6 +10,10 @@ declare module "sst" {
       "type": "sst.aws.Function"
       "url": string
     }
+    "SingleTable": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
     "VectorDB": {
       "putFunction": string
       "queryFunction": string
