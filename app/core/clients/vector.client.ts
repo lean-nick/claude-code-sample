@@ -11,7 +11,6 @@ const put = async (vector: number[], metadata: Record<string, string | number | 
     await client!.put({ vector, metadata })
 }
 
-// TODO: paginate?
 const query = async (vector: number[]) => {
     if (!client) getClient()
     const result = await client!.query({

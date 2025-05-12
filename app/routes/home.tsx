@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "ui/components/welcome";
+import { HomePage } from "~/ui/components/home-page";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -8,18 +8,13 @@ export function meta({ }: Route.MetaArgs) {
   ];
 }
 
-export async function loader() {
-  const response = await fetch('https://xrf7uypwf25f7zxzujauuzkdc40swvul.lambda-url.us-east-1.on.aws/sample', {
-    method: 'POST',
-    body: JSON.stringify({
-      message: 'Hello World!'
-    })
-  })
-  const data = await response.json() as { message: string }
-  console.info('What is our data', JSON.stringify(data))
-  return { message: data.message }
+export async function clientAction({
+  request,
+}: Route.ClientActionArgs) {
+  let formData = await request.formData();
+  console.info(formData);
 }
 
-export default function Home({ loaderData }) {
-  return <Welcome message={loaderData.message} />;
+export default function Home() {
+  return <HomePage />
 }

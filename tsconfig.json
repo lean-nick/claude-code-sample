@@ -28,9 +28,6 @@
       "~/*": [
         "./app/*"
       ],
-      "ui/*": [
-        "./app/ui/*"
-      ]
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
