@@ -1,26 +1,20 @@
 import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import { z } from 'zod'
+import { xyzService } from '~/core/services/xyz.service'
 
 const sample = new Hono()
-
-export const amazingHelper = (message: string) => {
-    console.info(message)
-}
 
 sample.post('/', zValidator(
     'json',
     z.object({
-        message: z.string(),
+        search: z.string(),
     })),
-    (c) => {
-        console.info(`Invoking sampleRouter['/'] with inputs: ${c.req.valid}`)
-        const { message } = c.req.valid('json')
-
-        amazingHelper(message)
-
+    async (c) => {
+        const { search } = c.req.valid('json')
+        const results = await xyzService.searchForXYZ(search)
         return c.json({
-            message
+            results
         })
     }
 )

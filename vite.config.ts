@@ -8,6 +8,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   test: {
-    include: ['./app/server/routes/*.test.ts', "./app/core/**/*.test.ts"]
+    include: ['./app/server/routes/*.test.ts', "./app/core/**/*.*.test.ts"]
   }
 });

@@ -5,6 +5,4 @@ const main = new Hono()
 
 main.route('/sample', sample)
 
-const AppType = typeof main
-
-export { main, AppType }
+export { main }

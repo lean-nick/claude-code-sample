@@ -10,12 +10,12 @@ const openai = new OpenAI();
 
 const createEmbedding = async (input: string) => {
     if (!client) getClient()
-    const embedding = await openai.embeddings.create({
+    const { data } = await openai.embeddings.create({
         model: "text-embedding-3-small",
         input,
         encoding_format: "float",
     });
-    return embedding
+    return data[0].embedding
 }
 
 export const openAiClient = {

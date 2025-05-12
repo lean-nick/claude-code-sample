@@ -17,9 +17,9 @@ export default $config({
     const table = new sst.aws.Dynamo("SingleTable", {
       fields: {
         input: "string",
-        vector: "string",
+        embedding: "string",
       },
-      primaryIndex: { hashKey: "input", rangeKey: "vector" }
+      primaryIndex: { hashKey: "input", rangeKey: "embedding" }
     });
 
     const server = new sst.aws.Function("Server", {
