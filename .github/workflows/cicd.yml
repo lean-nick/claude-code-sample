@@ -32,7 +32,7 @@ jobs:
 
       - name: Update Documentation
         run: claude -p "Update he READNE to accurately reflect the state of the project."
-        with:
+        env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       # - name: Configure AWS
