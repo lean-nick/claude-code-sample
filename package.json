@@ -12,6 +12,7 @@
     "deploy": "npx sst deploy --stage production"
   },
   "dependencies": {
+    "@anthropic-ai/claude-code": "^0.2.113",
     "@aws-sdk/client-dynamodb": "^3.806.0",
     "@aws-sdk/util-dynamodb": "^3.806.0",
     "@hono/zod-validator": "^0.5.0",
