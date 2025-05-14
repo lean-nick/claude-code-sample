@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
 
     steps:
       - name: Checkout code
@@ -34,7 +35,7 @@ jobs:
         run: npm install @anthropic-ai/claude-code
 
       - name: Update Documentation
-        run: npx claude -p --verbose --output-format json "Update the README to accurately reflect the state of the project." --allowedTools "Edit(README.md)"
+        run: npx claude -p --verbose --output-format stream-json "What is the meeaning of Life?" 
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
