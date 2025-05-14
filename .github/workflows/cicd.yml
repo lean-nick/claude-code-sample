@@ -30,12 +30,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Configure AWS
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Update Documentation
+        run: claude -p "Update he READNE to accurately reflect the state of the project."
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
-      - name: Deploy
-        run: |
-          npm run deploy
+      # - name: Configure AWS
+      #   uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #
+      # - name: Deploy
+      #   run: |
+      #     npm run deploy
