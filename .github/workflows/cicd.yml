@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install LT AI 
+        run: npm install @anthropic-ai/claude-code
+
       - name: Update Documentation
-        run: claude -p "Update he READNE to accurately reflect the state of the project."
+        run: npx claude -p "Update he READNE to accurately reflect the state of the project."
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
